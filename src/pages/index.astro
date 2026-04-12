@@ -1,9 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import Problem from "../components/Problem.astro";
+import Features from "../components/Features.astro";
+import Audience from "../components/Audience.astro";
+import Positioning from "../components/Positioning.astro";
+import WaitlistForm from "../components/WaitlistForm.astro";
+import Footer from "../components/Footer.astro";
 ---
 <Layout>
-  <main>
-    <h1 class="text-4xl text-accent font-bold p-8">Marcaum10</h1>
-    <p class="text-text-muted px-8">Landing page coming together...</p>
+  <Navbar />
+  <main class="pt-16">
+    <Hero />
+    <Problem />
+    <Features />
+    <Audience />
+    <Positioning />
+    <WaitlistForm />
   </main>
+  <Footer />
 </Layout>
