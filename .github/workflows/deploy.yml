@@ -20,8 +20,17 @@ jobs:
 
       - run: npm run build
 
-      - uses: cloudflare/wrangler-action@v3
+      - name: Create Pages project (if needed)
+        uses: cloudflare/wrangler-action@v3
+        continue-on-error: true
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: bebf135984d76ba50483560787bbec91
-          command: pages deploy dist --project-name marcaum10-com --branch main
+          command: pages project create marcaum10-com --production-branch main
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: bebf135984d76ba50483560787bbec91
+          command: pages deploy dist --project-name marcaum10-com --branch main --commit-dirty=true
